@@ -2,13 +2,14 @@ require 'nokogiri'
 require 'pry'
 require 'open-uri'
 
-def resort_hash
+class Scraper
+ def resort_hash
   
-  file = File.read('https://www.zrankings.com/')
-  zrankings = Nokogiri::HTML(file)
-  resorts = {}
+   file = File.read('https://www.zrankings.com/')
+   zrankings = Nokogiri::HTML(open(file))
+   resorts = []
   
-  zrankings.css(".tableshow table-wrap indie-blue").each do |resort|
-    binding.pry
-end
+   zrankings.css(".tableshow table-wrap indie-blue").each do |resort|
+     binding.pry
+ end
   
